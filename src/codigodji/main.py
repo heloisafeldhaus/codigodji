@@ -1,14 +1,33 @@
 import tkinter as tk
 import glob
+import pandas as pd
 
 def on_submit(event=None):
     user_input = entry.get()
     print("User typed:", user_input)
-    print(list_excel())
+    search_ean(user_input)
 
-def list_excel():
+def read_excels():
     files = glob.glob("*.xlsx") + glob.glob("*.xls")
-    return files
+    dfs = []
+    for file in files:
+        df = pd.read_excel(file)
+        dfs.append(df)
+    all_data = pd.concat(dfs, ignore_index=True)
+    return all_data
+
+def search_ean(ean):
+    # This function would contain the logic to search for the EAN in the data
+    print(f"Searching for EAN: {ean}")
+    # Here you would implement the search logic, e.g., filtering a DataFrame
+    data = read_excels() 
+    trimmed = data['EAN DJI'].astype(str).str.strip()
+    data_found = (data[trimmed == str(ean).strip()])
+
+    if not data_found.empty:
+        print(data_found['Código 400'].values[0])
+    else:
+        print(f'No data found for EAN: {ean}')
 
 # Create the main window
 root = tk.Tk()
