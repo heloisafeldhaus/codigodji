@@ -1,8 +1,14 @@
 import tkinter as tk
+import glob
 
 def on_submit(event=None):
     user_input = entry.get()
     print("User typed:", user_input)
+    print(list_excel())
+
+def list_excel():
+    files = glob.glob("*.xlsx") + glob.glob("*.xls")
+    return files
 
 # Create the main window
 root = tk.Tk()
