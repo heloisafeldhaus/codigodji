@@ -11,6 +11,7 @@ def on_submit(event=None):
         label_code400.config(text=f'Código Intelbras: {code400}')
     else:
         label_code400.config(text="Código Intelbras não encontrado.")
+    entry.delete(0, tk.END) # Clear the input field
 
 def read_excels():
     files = glob.glob("*.xlsx") + glob.glob("*.xls")
