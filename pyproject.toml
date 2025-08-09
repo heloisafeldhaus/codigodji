@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "codigodji"
+version = "0.1.0"
+description = "Consultar o código Intelbras dos produtos DJI"
+authors = [
+    { name = "Heloisa Kirchner Feldhaus", email = "helokirchner@gmail.com" }
+]
+requires-python = ">=3.8"
+dependencies = [
+    "pandas", # Para ler o Excel
+    "openpyxl", # Engine para pandas ler .xlsx
+    "tkinter-tooltip" #opcinal pata tooltips no Tkinter (interface gráfica que vem com linguagem simples em python)
+]
