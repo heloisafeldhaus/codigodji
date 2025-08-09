@@ -9,9 +9,9 @@ description = "Consultar o código Intelbras dos produtos DJI"
 authors = [
     { name = "Heloisa Kirchner Feldhaus", email = "helokirchner@gmail.com" }
 ]
-requires-python = ">=3.8"
-dependencies = [
-    "pandas", # Para ler o Excel
-    "openpyxl", # Engine para pandas ler .xlsx
-    "tkinter-tooltip" #opcinal pata tooltips no Tkinter (interface gráfica que vem com linguagem simples em python)
-]
+requires-python = ">=3.9"
+
+[tool.poetry.dependencies]
+pandas = "^2.3.1"
+openpyxl = "^3.1.5"
+tkinter-tooltip = "^3.1.2"
