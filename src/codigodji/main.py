@@ -3,9 +3,14 @@ import glob
 import pandas as pd
 
 def on_submit(event=None):
-    user_input = entry.get()
-    print("User typed:", user_input)
-    search_ean(user_input)
+    input_ean = entry.get()
+    print("Input EAN:", input_ean)
+    code400 = search_code400_by_ean(input_ean)
+    print("Código 400:", code400)
+    if code400:
+        label_code400.config(text=f'Código Intelbras: {code400}')
+    else:
+        label_code400.config(text="Código Intelbras não encontrado.")
 
 def read_excels():
     files = glob.glob("*.xlsx") + glob.glob("*.xls")
@@ -16,7 +21,7 @@ def read_excels():
     all_data = pd.concat(dfs, ignore_index=True)
     return all_data
 
-def search_ean(ean):
+def search_code400_by_ean(ean):
     # This function would contain the logic to search for the EAN in the data
     print(f"Searching for EAN: {ean}")
     # Here you would implement the search logic, e.g., filtering a DataFrame
@@ -25,7 +30,7 @@ def search_ean(ean):
     data_found = (data[trimmed == str(ean).strip()])
 
     if not data_found.empty:
-        print(data_found['Código 400'].values[0])
+        return(data_found['Código 400'].values[0])
     else:
         print(f'No data found for EAN: {ean}')
 
@@ -33,6 +38,10 @@ def search_ean(ean):
 root = tk.Tk()
 root.title("Input Example")
 root.geometry("400x300")
+
+# Add a label
+label_code400 = tk.Label(root, text="")
+label_code400.pack(pady=10)
 
 # Create o campo de entrada
 entry = tk.Entry(root, width=30)
