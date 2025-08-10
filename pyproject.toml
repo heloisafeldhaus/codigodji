@@ -9,9 +9,13 @@ description = "Consultar o código Intelbras dos produtos DJI"
 authors = [
     { name = "Heloisa Kirchner Feldhaus", email = "helokirchner@gmail.com" }
 ]
-requires-python = ">=3.9"
+requires-python = ">=3.9,<3.15"
 
 [tool.poetry.dependencies]
 pandas = "^2.3.1"
 openpyxl = "^3.1.5"
 tkinter-tooltip = "^3.1.2"
+
+[tool.poetry.group.dev.dependencies]
+pyinstaller = "^6.15.0"
+
